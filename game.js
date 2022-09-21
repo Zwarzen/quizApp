@@ -14,9 +14,11 @@ let availableQuesions = [];
 let questions = [];
 
 fetch(
-    'https://github.com/Zwarzen/questions/blob/main/questions.json'
+    'https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple'
+    // 'https://github.com/Zwarzen/questions/blob/main/questions.json'
 )
-    .then((res) => {
+    .then(function (res) {
+        resClone = res.clone();
         return res.json();
     })
     .then((loadedQuestions) => {
@@ -43,7 +45,7 @@ fetch(
         startGame();
     })
     .catch((err) => {
-        console.error(err);
+        console.error(err)
     });
 
 //CONSTANTS banyak pertanyaan
