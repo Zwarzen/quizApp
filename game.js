@@ -65,8 +65,8 @@ fetch('https://raw.githubusercontent.com/Zwarzen/questions/main/questions.json')
     .catch(err=> console.log(err))
 
 //CONSTANTS banyak pertanyaan
-const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 3;
+const CORRECT_BONUS = 20;
+const MAX_QUESTIONS = 5;
 
 startGame = () => {
     questionCounter = 0;
