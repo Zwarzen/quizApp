@@ -48,11 +48,11 @@ let questions = [];
 //     });
 
 
-//fetch untuk strucktur API dari github
+// fetch untuk strucktur API dari github
 fetch('https://raw.githubusercontent.com/Zwarzen/questions/main/questions.json')
     .then(res=>res.json())
     .then((resp)=>{
-        questions.push(...[...resp]);
+        questions.push(...resp);
         startGame()
 
         //cek
@@ -61,6 +61,18 @@ fetch('https://raw.githubusercontent.com/Zwarzen/questions/main/questions.json')
         console.log(availableQuesions)
     })
     .catch(err=> console.log(err))
+
+
+//menggunakan json external
+// setTimeout(()=>{
+//     console.log(externalQuestion);
+//     questions.push(...externalQuestion);
+//     startGame();
+
+//     //cek
+//     console.log(questions)
+//     console.log(availableQuesions)
+// },10)
 
 //CONSTANTS banyak pertanyaan
 const CORRECT_BONUS = 10;
@@ -77,7 +89,7 @@ startGame = () => {
 
 getNewQuestion = () => {
     if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
-        localStorage.setItem('mostRecentScore', score);
+        localStorage.setItem('mostRecentScore', score); //set score saat ini ke local storage, untuk dioper kehalaman berikutnya
         //go to the end page
         return window.location.assign('./end.html');
     }
@@ -90,10 +102,21 @@ getNewQuestion = () => {
     currentQuestion = availableQuesions[questionIndex];
     question.innerHTML = currentQuestion.question;
 
-    choices.forEach((choice) => {
-        const number = choice.dataset['number'];
-        choice.innerHTML = currentQuestion['choice' + number];
-    });
+    if(currentQuestion.is_image){ //handle bila pertanyaan adalah gambar
+        choices.forEach((choice) => {
+            const number = choice.dataset['number'];
+            choice.innerHTML = 
+            `<div style="display : flex; justify-content: center"> 
+                <img src="${currentQuestion['choice' + number]}" style="max-height: 100px;" /> 
+            </div>`;
+        });
+    }else{ //hadle bila pertanyaan adalah text
+        choices.forEach((choice) => {
+            const number = choice.dataset['number'];
+            choice.innerHTML = currentQuestion['choice' + number];
+        });
+    }
+
 
     availableQuesions.splice(questionIndex, 1);
     acceptingAnswers = true;
@@ -104,7 +127,15 @@ choices.forEach((choice) => {
         if (!acceptingAnswers) return;
 
         acceptingAnswers = false;
-        const selectedChoice = e.target;
+        let selectedChoice; // <<-- element yang diklik
+        //cek percabangan tergantungn element yg diklik
+        if(e.target.tagName == "DIV"){
+            selectedChoice = e.target.parentElement;
+        }else if(e.target.tagName == "IMG"){
+            selectedChoice = e.target.parentElement.parentElement;
+        }else{
+            selectedChoice = e.target;
+        }
         const selectedAnswer = selectedChoice.dataset['number'];
 
         const classToApply =
@@ -127,3 +158,5 @@ incrementScore = (num) => {
     score += num;
     scoreText.innerText = score;
 };
+
+
