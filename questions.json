@@ -82,6 +82,14 @@
         "choice3": "16 November",
         "choice4": "15 September",
         "answer": 1
+    },
+    {
+        "question": "Tour de Ijen dilaksanakan di gunung?",
+        "choice1": "Gunung Ijen",
+        "choice2": "Gunung Puncak Jaya",
+        "choice3": "Gunung Semeru",
+        "choice4": "Gunung Bromo",
+        "answer": 1
     }
     
 ]
