@@ -1,4 +1,4 @@
-[
+ [
     {
         "question": "Mana Buah yang disebut `Nangka Landa`?",
         "choice1": "Pisang",
@@ -8,8 +8,7 @@
         "answer": 1
     },
     {
-        "question":
-            "Dimana Tour de Ijen dilaksanakan?",
+        "question": "Dimana Tour de Ijen dilaksanakan?",
         "choice1": "Gunung Semeru",
         "choice2": "Gunung Bromo",
         "choice3": "Gunung Ijen",
@@ -24,7 +23,6 @@
         "choice4": "Gambar D",
         "answer": 4
     },
-
     {
         "question": "Kendaraan Tawang Alun adalah?",
         "choice1": "Kuda",
@@ -33,7 +31,6 @@
         "choice4": "Macan Putih",
         "answer": 4
     },
-
     {
         "question": "Baju adat asal Banyuwangi adalah?",
         "choice1": "Jebeng Thulik",
@@ -42,7 +39,6 @@
         "choice4": "Nggembe",
         "answer": 1
     },
-
     {
         "question": "Tempat Wisata di Banyuwangi yang terkenal akan Bukit Merah disekitar pantainya adalah?",
         "choice1": "Tuz Gola",
@@ -51,7 +47,6 @@
         "choice4": "Retba",
         "answer": 2
     },
-
     {
         "question": "Makanan Khas asal Banyuwangi adalah?",
         "choice1": "Rendang",
@@ -60,7 +55,6 @@
         "choice4": "Pempek",
         "answer": 3
     },
-
     {
         "question": "salah satu Hutan yang terkenal di Banyuwangi adalah?",
         "choice1": "Hutan Malino",
@@ -69,7 +63,6 @@
         "choice4": "Wehea",
         "answer": 2
     },
-
     {
         "question": "Camilan yang berasal dari Banyuwangi adalahh?",
         "choice1": "Bagiak",
@@ -78,13 +71,39 @@
         "choice4": "Meuseukat",
         "answer": 1
     },
-
     {
         "question": "Kapan hari jadi Banyuwangi?",
         "choice1": "18 Desember",
         "choice2": "17 Agustus",
         "choice3": "16 November",
         "choice4": "15 September",
+        "answer": 1
+    },
+    {
+        "question": "Kapan hari jadi Banyuwangi?",
+        "is_image": true,
+        "choice1": "gandrung.jpg",
+        "choice2": "gandrung.jpg",
+        "choice3": "gandrung.jpg",
+        "choice4": "gandrung.jpg",
+        "answer": 1
+    },
+    {
+        "question": "dimana saya sekarang",
+        "is_image": true,
+        "choice1": "gandrung.jpg",
+        "choice2": "gandrung.jpg",
+        "choice3": "gandrung.jpg",
+        "choice4": "gandrung.jpg",
+        "answer": 1
+    },
+    {
+        "question": "kenapa dina makan",
+        "is_image": true,
+        "choice1": "gandrung.jpg",
+        "choice2": "gandrung.jpg",
+        "choice3": "gandrung.jpg",
+        "choice4": "gandrung.jpg",
         "answer": 1
     }
 ]
