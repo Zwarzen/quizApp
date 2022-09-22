@@ -13,6 +13,7 @@ let availableQuesions = [];
 
 let questions = [];
 
+//Ambil data pertanyaan di JSON
 fetch('https://raw.githubusercontent.com/Zwarzen/questions/main/questions.json')
     .then(res=>res.json())
     .then((resp)=>{
@@ -39,6 +40,7 @@ startGame = () => {
     loader.classList.add('hidden');
 };
 
+//Progress Bar dan Question Index
 getNewQuestion = () => {
     if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         localStorage.setItem('mostRecentScore', score);
@@ -63,6 +65,7 @@ getNewQuestion = () => {
     acceptingAnswers = true;
 };
 
+//Choice Benar/Salah
 choices.forEach((choice) => {
     choice.addEventListener('click', (e) => {
         if (!acceptingAnswers) return;
@@ -87,6 +90,7 @@ choices.forEach((choice) => {
     });
 });
 
+//Counter Score
 incrementScore = (num) => {
     score += num;
     scoreText.innerText = score;
