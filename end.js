@@ -22,7 +22,7 @@ saveHighScore = (e) => {
     };
     highScores.push(score);
     highScores.sort((a, b) => b.score - a.score);
-    highScores.splice(5);
+    highScores.splice(5); // <<- dapatkan 5 score tertinggi
 
     localStorage.setItem('highScores', JSON.stringify(highScores));
     window.location.assign('./highscores.html');
