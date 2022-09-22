@@ -46,7 +46,7 @@
         "question": "Tempat Wisata di Banyuwangi yang terkenal akan Bukit Merah disekitar pantainya adalah?",
         "is_image": true,
         "choice1": "./assets/pulauMerah/hillier.png",
-        "choice2": "./assets/pulauMerah/pulaumerah/JPG",
+        "choice2": "./assets/pulauMerah/pulaumerah.JPG",
         "choice3": "./assets/pulauMerah/telukijo.jpg",
         "choice4": "./assets/pulauMerah/retba.jpg",
         "answer": 2
