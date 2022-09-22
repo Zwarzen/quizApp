@@ -13,42 +13,7 @@ let availableQuesions = [];
 
 let questions = [];
 
-// fetch(
-//     'https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple'
-// )
-//     .then(function (res) {
-//         resClone = res.clone();
-//         return res.json();
-//     })
-//     .then((loadedQuestions) => {
-//         questions = loadedQuestions.results.map((loadedQuestion) => {
-//             const formattedQuestion = {
-//                 question: loadedQuestion.question,
-//             };
-
-//             const answerChoices = [...loadedQuestion.incorrect_answers];
-//             formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
-//             answerChoices.splice(
-//                 formattedQuestion.answer - 1,
-//                 0,
-//                 loadedQuestion.correct_answer
-//             );
-
-//             answerChoices.forEach((choice, index) => {
-//                 formattedQuestion['choice' + (index + 1)] = choice;
-//             });
-
-//             return formattedQuestion;
-//         });
-
-//         startGame();
-//     })
-//     .catch((err) => {
-//         console.error(err)
-//     });
-
-
-// fetch untuk strucktur API dari github
+//Ambil data pertanyaan di JSON
 fetch('https://raw.githubusercontent.com/Zwarzen/questions/main/questions.json')
     .then(res=>res.json())
     .then((resp)=>{
@@ -75,8 +40,8 @@ fetch('https://raw.githubusercontent.com/Zwarzen/questions/main/questions.json')
 // },10)
 
 //CONSTANTS banyak pertanyaan
-const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 3;
+const CORRECT_BONUS = 20;
+const MAX_QUESTIONS = 5;
 
 startGame = () => {
     questionCounter = 0;
@@ -87,6 +52,7 @@ startGame = () => {
     loader.classList.add('hidden');
 };
 
+//Progress Bar dan Question Index
 getNewQuestion = () => {
     if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         localStorage.setItem('mostRecentScore', score); //set score saat ini ke local storage, untuk dioper kehalaman berikutnya
@@ -122,6 +88,7 @@ getNewQuestion = () => {
     acceptingAnswers = true;
 };
 
+//Choice Benar/Salah
 choices.forEach((choice) => {
     choice.addEventListener('click', (e) => {
         if (!acceptingAnswers) return;
@@ -154,6 +121,7 @@ choices.forEach((choice) => {
     });
 });
 
+//Counter Score
 incrementScore = (num) => {
     score += num;
     scoreText.innerText = score;

@@ -16,12 +16,12 @@
         "answer": 3
     },
     {
-        "question": "Berikut yang merupakan Pulau Merah adalah?",
-        "choice1": "Gambar A",
-        "choice2": "Gambar B",
-        "choice3": "Gambar C",
-        "choice4": "Gambar D",
-        "answer": 4
+        "question": "Sebuah acara ngopi bersama di Banyuwangi adalah?",
+        "choice1": "Ngopi Sewu",
+        "choice2": "Ngopi Sepuluh Ewu",
+        "choice3": "Ngopi Seket Ewu",
+        "choice4": "Ngopi Satus Ewu",
+        "answer": 2
     },
     {
         "question": "Kendaraan Tawang Alun adalah?",

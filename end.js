@@ -9,10 +9,12 @@ const MAX_HIGH_SCORES = 5;
 
 finalScore.innerText = mostRecentScore;
 
+//Memberi Nama agar tidak kosong
 username.addEventListener('keyup', () => {
     saveScoreBtn.disabled = !username.value;
 });
 
+//Push Score
 saveHighScore = (e) => {
     e.preventDefault();
 
