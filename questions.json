@@ -1,18 +1,20 @@
  [
     {
         "question": "Mana Buah yang disebut `Nangka Landa`?",
-        "choice1": "Pisang",
-        "choice2": "Nangka",
-        "choice3": "Durian",
-        "choice4": "Sirsat",
-        "answer": 1
+        "is_image": true,
+        "choice1": "./assets/buah/anggur.jpg",
+        "choice2": "./assets/buah/durian.jpg",
+        "choice3": "./assets/buah/srikaya.jpg",
+        "choice4": "./assets/buah/sirsat.jpg",
+        "answer": 4
     },
     {
         "question": "Dimana Tour de Ijen dilaksanakan?",
-        "choice1": "Gunung Semeru",
-        "choice2": "Gunung Bromo",
-        "choice3": "Gunung Ijen",
-        "choice4": "Gunung Puncak Jaya",
+        "is_image": true,
+        "choice1": "./assets/gunung/bromo.jpeg",
+        "choice2": "./assets/gunung/semeru.jpg",
+        "choice3": "./assets/gunung/ijen.jpg",
+        "choice4": "./assets/gunung/Puncakjaya.jpg",
         "answer": 3
     },
     {
@@ -25,10 +27,11 @@
     },
     {
         "question": "Kendaraan Tawang Alun adalah?",
-        "choice1": "Kuda",
-        "choice2": "Harimau",
-        "choice3": "Macan Kumbang",
-        "choice4": "Macan Putih",
+        "is_image": true,   
+        "choice1": "./assets/Tunggangan/kuda.png",
+        "choice2": "./assets/Tunggangan/macanKumbang.jpg",
+        "choice3": "./assets/Tunggangan/singa.jpg",
+        "choice4": "./assets/Tunggangan/macanputih.jpg",
         "answer": 4
     },
     {
@@ -41,10 +44,11 @@
     },
     {
         "question": "Tempat Wisata di Banyuwangi yang terkenal akan Bukit Merah disekitar pantainya adalah?",
-        "choice1": "Tuz Gola",
-        "choice2": "Red Island",
-        "choice3": "Hillier",
-        "choice4": "Retba",
+        "is_image": true,
+        "choice1": "./assets/pulauMerah/hillier.png",
+        "choice2": "./assets/pulauMerah/pulaumerah/JPG",
+        "choice3": "./assets/pulauMerah/telukijo.jpg",
+        "choice4": "./assets/pulauMerah/retba.jpg",
         "answer": 2
     },
     {
@@ -78,32 +82,6 @@
         "choice3": "16 November",
         "choice4": "15 September",
         "answer": 1
-    },
-    {
-        "question": "Kapan hari jadi Banyuwangi?",
-        "is_image": true,
-        "choice1": "gandrung.jpg",
-        "choice2": "gandrung.jpg",
-        "choice3": "gandrung.jpg",
-        "choice4": "gandrung.jpg",
-        "answer": 1
-    },
-    {
-        "question": "dimana saya sekarang",
-        "is_image": true,
-        "choice1": "gandrung.jpg",
-        "choice2": "gandrung.jpg",
-        "choice3": "gandrung.jpg",
-        "choice4": "gandrung.jpg",
-        "answer": 1
-    },
-    {
-        "question": "kenapa dina makan",
-        "is_image": true,
-        "choice1": "gandrung.jpg",
-        "choice2": "gandrung.jpg",
-        "choice3": "gandrung.jpg",
-        "choice4": "gandrung.jpg",
-        "answer": 1
     }
+    
 ]
