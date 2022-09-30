@@ -127,4 +127,29 @@ incrementScore = (num) => {
     scoreText.innerText = score;
 };
 
+//Timer
+function timerGame(){
+    let interval = 5; //5 detik
 
+    progressBar.style.width = "100%";
+    timeSpan.innerHTML = "5s"
+
+    timeInter = setInterval (() => {
+        interval--;
+
+        let progressWidth = interval / 5 * 100
+
+        if(interval >0){
+            progressBar.style.width =  progressWidth + "%"
+            timeSpan.innerHTML = interval + "s"
+            checkColors(progressWidth)
+        }else{
+        clearInterval(timeInter)
+        progressBar.style.width = "0%";
+        timeSpan.innerHTML = "Game Over";
+        
+        
+        getNewQuestion();
+        }
+    },1000);
+}
