@@ -1,3 +1,5 @@
+ 
+
 class Lobby{
     lobbyMenu;
     startBtn;
@@ -50,13 +52,6 @@ class Lobby{
                     expect : "start the game | make all player start the game"
                 })
             )
-        })
-
-        this.configBtn.addEventListener('click', (e)=>{
-            this.setVisibility(false);
-            setTimeout(()=>{
-                config.setVisibility(true);
-            }, 150)
         })
     }
     
@@ -191,12 +186,12 @@ class StartGame{
         this.gameMenuContainer = document.querySelector('#game-menu');
         this.gameMenuContainer = document.querySelector('#game-menu');
 
-        this.question = new Question();
+        // this.question = new Question();
     }
 
     start(){
         this.setVisibility(true);
-        this.fetchQuestion();
+        // this.fetchQuestion();
     }
 
     setVisibility(is){
@@ -211,7 +206,7 @@ class StartGame{
             },10);
             
             // ** untuk content **
-            this.question.setVisibility(true);
+            // this.question.setVisibility(true);
             this.startGameEffect(true);
             return;
         }
@@ -224,7 +219,7 @@ class StartGame{
         },150);
         
         // ** untuk content **
-        this.question.setVisibility(false);
+        // this.question.setVisibility(false);
         this.startGameEffect(false);
     }
 
@@ -486,19 +481,16 @@ class Main{
         this.errorSocket.classList.remove('hidden')
     }
 
-    fetchQuestion(url){
-
-    }
-
+    fetchQuestion(url){}
     handleUpdateQuestion(){}
-
     setStartGame(){}
 
 }
 
 // *** rule untuk game ***
-const COUNT_QUESTION = 10; //banyak pertanyaa
-const GAME_LONG = 10; //lama per pertanyaan
+
+
+
 
 async function main(){
     let game = new Main();
