@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>ini test halaman admin</title>
+
+  <style>
+    .slide-out{
+        transform: translateX(40px);
+        opacity: 0;
+    }
+    .slide-in{
+        transform: translateX(-40px);
+    }
+    .h-out{
+      height: 1rem;
+      overflow: hidden;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="h-1 bg-gradient-to-r from-sky-500"></div>
+  <div class="min-h-screen bg-gray-50 p-4">
+    <div class="container pt-6 mx-auto lg:px-24">
+
+      <div id="header" class="header"><!-- untuk header -->
+        <h1 id="title-game" class="font-semibold text-3xl text-center">Halaman Lobby</h1>
+        <!-- lobby menu -->
+        <div id="lobby-menu" class="hidden border-sky-400  mt-4 flex gap-2 p-2 relative transition-all"> 
+          <button id="btn-start" class="group h-full rounded-full border-2 border-sky-500 bg-sky-400 shadow hover:bg-sky-500 active:bg-sky-700 active:ring-1 active:ring-sky-200 transition-all">
+            <h5 class="text-center py-0.5 px-32 text-white font-medium text-lg">
+              <div class="inline-flex gap-2">
+                Start
+                <svg class="w-5 fill-transparent group-hover:fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+              </div>
+            </h5>
+          </button>
+          <button id="config-btn" class="hidden min-h-full bg-white rounded-full border border-sky-600 hover:bg-gray-100 active:bg-gray-300 shadow">
+            <h5 class="text-center py-0.5 px-32">
+              <div class="inline-flex gap-2">
+                Config
+                <svg class="w-5 fill-transparent group-hover:fill-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+              </div>
+            </h5>
+          </button>
+        </div>
+
+        <!-- game menu -->
+        <div id="game-menu" class="hidden flex justify-between mt-8 bg-white rounded shadow p-2 relative transition-all">
+            <div class="flex gap-2 justify-around">
+                <div class="nomor hidden basis-1/4 min-w-[15rem] p-2 rounded-lg border-[3px] border-dashed border-sky-200">
+                    <p class="font-medium bg-sky-200 rounded p-2">No.</p>
+                    <h3 id="num-question" class="text-4xl" >1</h3>
+                </div>
+                <div class="jumlah-pemain basis-1/4 min-w-[15rem] p-2  rounded-lg border-[3px] border-dashed border-sky-200">
+                    <p class="font-medium bg-amber-200 rounded p-2">Jumlah Pemain</p>
+                    <h3 id="num-player" class="text-4xl" >12</h3>
+                </div>
+                <div class="jumlah-soal basis-1/4 min-w-[15rem] p-2  rounded-lg border-[3px] border-dashed border-sky-200">
+                    <p class="font-medium bg-green-200 rounded p-2">Jumlah Soal</p>
+                    <h3 id="sum-question" class="text-4xl" >12</h3>
+                </div>
+            </div>
+            <div class="inline-flex hidden gap-2  rounded-lg p-2 border-2 border-green-600 border-dashed">
+                <h1 class="text-7xl self-end bg-white rounded px-2">10 <span class="text-2xl"></span></h1>
+                <h1 class="self-end bg-green-100" >
+                    <svg class="w-8"  xmlns="http://www.w3.org/2000/svg" fill="black" class="bi bi-hourglass" viewBox="0 0 16 16">
+                        <path d="M2 1.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1-.5-.5zm2.5.5v1a3.5 3.5 0 0 0 1.989 3.158c.533.256 1.011.791 1.011 1.491v.702c0 .7-.478 1.235-1.011 1.491A3.5 3.5 0 0 0 4.5 13v1h7v-1a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351v-.702c0-.7.478-1.235 1.011-1.491A3.5 3.5 0 0 0 11.5 3V2h-7z"/>
+                    </svg>
+                    
+                </h1>
+            </div>
+        </div>
+
+        <!--config game-->
+        <div id="config-menu" class="hidden min-h-[5rem] bg-white rounded mt-3 flex gap-2 p-2 relative transition-all">
+          <div class="flex-grow">
+            <div class="flex justify-between">
+              <h3 class="text-lg font-semibold">Config</h3>
+              <div class="confirmation flex gap-2">
+                <button id="config-cancel" class="border border-red-600 bg-red-50 p-2 px-5 rounded-lg text-red-800 hover:bg-red-100 active:bg-red-200 font-semibold">batal</button>
+                <button id="config-save" class="border border-green-600 bg-green-50 p-2 px-5 rounded-lg text-green-800 hover:bg-green-100 active:bg-green-200 font-semibold">Simpan</button>
+              </div>
+            </div>
+            <hr class="my-2" />
+            <div class="config-input inline-flex gap-2">
+              <div class="inline-flex gap-2 bg-gray-100 border border-sky-200 p-1 rounded-lg">
+                <p class="whitespace-nowrap font-semibold text-sm mx-2 self-center">Banyak Soal </p>
+                <input type="number" id="soal-number-input" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus-within:ring-blue-500 focus-visible:outline-blue-500 block w-full p-2.5 ">
+              </div>
+              <div class="inline-flex gap-2 bg-gray-100 border border-sky-200 p-1 rounded-lg">
+                <p class="whitespace-nowrap font-semibold text-sm mx-2 self-center">lama waktu (s) </p>
+                <input type="number" id="waktu-number-input" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus-within:ring-blue-500 focus-visible:outline-blue-500 block w-full p-2.5 ">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!--question bar-->
+      <div id="question-indicator-bar" class="h-1 bg-sky-600 w-full rounded-full"></div>
+
+      <!-- untuk content -->
+      <div id="content" class="content bg-white mt-3 rounded p-2 shadow">
+        <h3 class="font-normal text-lg mb-2">Menunggu pemain pemain</h3>
+        <hr />
+        <div class="flex gap-2">
+          <!-- curretn question -->
+          <div id="current-question-container" class="hidden basis-1/3 py-2 transition-all">
+            <div class="w-full border-2 border-sky-500 min-h-[3rem] rounded-lg p-1 px-2">
+              <h3 class="text-center text-sky-800 font-semibold">Pertanyaan saat ini</h3>
+              <p id="question" class="text-md p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad sapiente cum hic modi similique! Non quam alias corporis aperiam, quas tenetur quidem sunt temporibus repellat, amet libero. Placeat, commodi minima.</p>
+              <div class="answers flex flex-col gap-1 mt-2"> <!--pilihan-->
+                <div class="inline-flex w-full gap-2 bg-gray-100 border border-sky-200 p-1 rounded-lg">
+                  <p class="whitespace-nowrap font-semibold text-sm mx-2 mt-2 self-start">A. </p>
+                  <p class="answer-option bg-white rounded w-full p-0.5">Lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, dicta!</p>
+                </div>
+                <div class="inline-flex w-full gap-2 bg-gray-100 border border-sky-200 p-1 rounded-lg">
+                  <p class="whitespace-nowrap font-semibold text-sm mx-2 mt-2 self-start">B. </p>
+                  <p class="answer-option bg-white rounded w-full p-0.5">Lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, dicta!</p>
+                </div>
+                <div class="inline-flex w-full gap-2 bg-gray-100 border border-sky-200 p-1 rounded-lg">
+                  <p class="whitespace-nowrap font-semibold text-sm mx-2 mt-2 self-start">C. </p>
+                  <p class="answer-option bg-white rounded w-full p-0.5">Lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, dicta!</p>
+                </div>
+                <div class="inline-flex w-full gap-2 bg-gray-100 border border-sky-200 p-1 rounded-lg">
+                  <p class="whitespace-nowrap font-semibold text-sm mx-2 mt-2 self-start">D. </p>
+                  <p class="answer-option bg-white rounded w-full p-0.5">Lorem ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, dicta!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- list player -->
+          <div id="player-container" class="flex-grow py-2 flex flex-col gap-2 transition-all"> <!--container untuk player-->
+            
+            <div id="error-socket" class=" hidden rounded bg-red-300 p-3"> <!--bila socket bermasalah-->
+              <h1 class="flex justify-center gap-2 text-red-900 text-md font-semibold">
+                <svg class="inline self-center" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                Web Socket sedang bermasalah
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./components.js"></script>
+  <script src="./admin.js"></script>
+</body>
+</html>

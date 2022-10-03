@@ -13,43 +13,35 @@ let availableQuesions = [];
 
 let questions = [];
 
-fetch(
-    'https://github.com/Zwarzen/questions/blob/main/questions.json'
-)
-    .then(function (res) {
-        resClone = res.clone();
-        return res.json();
+//Ambil data pertanyaan di JSON
+fetch('https://raw.githubusercontent.com/Zwarzen/questions/main/questions.json')
+    .then(res=>res.json())
+    .then((resp)=>{
+        questions.push(...resp);
+        startGame()
+
+        //cek
+        console.log(resp)
+        console.log(questions)
+        console.log(availableQuesions)
     })
-    .then((loadedQuestions) => {
-        questions = loadedQuestions.results.map((loadedQuestion) => {
-            const formattedQuestion = {
-                question: loadedQuestion.question,
-            };
+    .catch(err=> console.log(err))
 
-            const answerChoices = [...loadedQuestion.incorrect_answers];
-            formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
-            answerChoices.splice(
-                formattedQuestion.answer - 1,
-                0,
-                loadedQuestion.correct_answer
-            );
 
-            answerChoices.forEach((choice, index) => {
-                formattedQuestion['choice' + (index + 1)] = choice;
-            });
+//menggunakan json external
+// setTimeout(()=>{
+//     console.log(externalQuestion);
+//     questions.push(...externalQuestion);
+//     startGame();
 
-            return formattedQuestion;
-        });
-
-        startGame();
-    })
-    .catch((err) => {
-        console.error(err)
-    });
+//     //cek
+//     console.log(questions)
+//     console.log(availableQuesions)
+// },10)
 
 //CONSTANTS banyak pertanyaan
-const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 3;
+const CORRECT_BONUS = 20;
+const MAX_QUESTIONS = 5;
 
 startGame = () => {
     questionCounter = 0;
@@ -60,14 +52,15 @@ startGame = () => {
     loader.classList.add('hidden');
 };
 
+//Progress Bar dan Question Index
 getNewQuestion = () => {
     if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
-        localStorage.setItem('mostRecentScore', score);
+        localStorage.setItem('mostRecentScore', score); //set score saat ini ke local storage, untuk dioper kehalaman berikutnya
         //go to the end page
         return window.location.assign('./end.html');
     }
     questionCounter++;
-    progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
+    progressText.innerText = `Pertanyaan ${questionCounter}/${MAX_QUESTIONS}`;
     //Update the progress bar
     progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
 
@@ -75,21 +68,41 @@ getNewQuestion = () => {
     currentQuestion = availableQuesions[questionIndex];
     question.innerHTML = currentQuestion.question;
 
-    choices.forEach((choice) => {
-        const number = choice.dataset['number'];
-        choice.innerHTML = currentQuestion['choice' + number];
-    });
+    if(currentQuestion.is_image){ //handle bila pertanyaan adalah gambar
+        choices.forEach((choice) => {
+            const number = choice.dataset['number'];
+            choice.innerHTML = 
+            `<div style="display : flex; justify-content: center"> 
+                <img src="${currentQuestion['choice' + number]}" style="max-height: 100px;" /> 
+            </div>`;
+        });
+    }else{ //hadle bila pertanyaan adalah text
+        choices.forEach((choice) => {
+            const number = choice.dataset['number'];
+            choice.innerHTML = currentQuestion['choice' + number];
+        });
+    }
+
 
     availableQuesions.splice(questionIndex, 1);
     acceptingAnswers = true;
 };
 
+//Choice Benar/Salah
 choices.forEach((choice) => {
     choice.addEventListener('click', (e) => {
         if (!acceptingAnswers) return;
 
         acceptingAnswers = false;
-        const selectedChoice = e.target;
+        let selectedChoice; // <<-- element yang diklik
+        //cek percabangan tergantungn element yg diklik
+        if(e.target.tagName == "DIV"){
+            selectedChoice = e.target.parentElement;
+        }else if(e.target.tagName == "IMG"){
+            selectedChoice = e.target.parentElement.parentElement;
+        }else{
+            selectedChoice = e.target;
+        }
         const selectedAnswer = selectedChoice.dataset['number'];
 
         const classToApply =
@@ -108,7 +121,35 @@ choices.forEach((choice) => {
     });
 });
 
+//Counter Score
 incrementScore = (num) => {
     score += num;
     scoreText.innerText = score;
 };
+
+//Timer
+function timerGame(){
+    let interval = 5; //5 detik
+
+    progressBar.style.width = "100%";
+    timeSpan.innerHTML = "5s"
+
+    timeInter = setInterval (() => {
+        interval--;
+
+        let progressWidth = interval / 5 * 100
+
+        if(interval >0){
+            progressBar.style.width =  progressWidth + "%"
+            timeSpan.innerHTML = interval + "s"
+            checkColors(progressWidth)
+        }else{
+        clearInterval(timeInter)
+        progressBar.style.width = "0%";
+        timeSpan.innerHTML = "Game Over";
+        
+        
+        getNewQuestion();
+        }
+    },1000);
+}

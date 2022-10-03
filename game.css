@@ -71,6 +71,38 @@
   height: 12rem;
   animation: spin 2s linear infinite;
 }
+/* 
+h3{
+  font-size : 50px;
+  font-weight: bold;
+} */
+
+.progress{
+  width: 600px;
+  height: 20px;
+  background-color: gray;
+  /* padding: 15px; */
+  position: relative;
+}
+
+.progress-inner{
+  background: green;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* .btn-start{
+  padding: 20px;
+  width: 20%;
+  font-size: 10px;
+  background-color: gray;
+  color: white;
+  border: 0;
+  outline: none;
+  border-radius: 5px;
+  font-weight: bold;
+} */
 
 @keyframes spin {
   0% {
