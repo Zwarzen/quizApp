@@ -5,13 +5,48 @@ const scoreText = document.getElementById('score');
 const progressBarFull = document.getElementById('progressBarFull');
 const loader = document.getElementById('loader');
 const game = document.getElementById('game');
+const btnStart = document.querySelector(".btn-start");
+const timeSpan  = document.querySelector(".time");
+const progressBar = document.querySelector(".progress-inner");
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuesions = [];
+let timeInter; //untuk menyimpan interval timer
 
 let questions = [];
+
+/* di disable dulu */
+// btnStart.addEventListener("click",()=>{
+//     let interval = 10;
+
+//     var countDown = setInterval (() => {
+//         interval--;
+
+//         let progressWidth = interval / 10 * 100
+
+//         if(interval >0){
+//             progressBar.style.width =  progressWidth + "%"
+//             timeSpan.innerHTML = interval + "s"
+//             checkColors(progressWidth)
+//         }else{
+//         clearInterval(countDown)
+//         progressBar.style.width = "0%";
+//         timeSpan.innerHTML = "Game Over"
+//         }
+//     },1000);
+// })
+
+const checkColors = (width) => {
+    if(width > 60){
+        progressBar.style.background = "green";
+    }else if (width > 30){
+        progressBar.style.background = "yellow";
+    }else {
+        progressBar.style.background = "red";
+    }
+};
 
 //Ambil data pertanyaan di JSON
 fetch('https://raw.githubusercontent.com/Zwarzen/questions/main/questions.json')
@@ -54,6 +89,11 @@ startGame = () => {
 
 //Progress Bar dan Question Index
 getNewQuestion = () => {
+
+    clearInterval(timeInter);
+    timerGame();
+
+
     if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         localStorage.setItem('mostRecentScore', score); //set score saat ini ke local storage, untuk dioper kehalaman berikutnya
         //go to the end page
@@ -127,7 +167,8 @@ incrementScore = (num) => {
     scoreText.innerText = score;
 };
 
-//Timer
+
+
 function timerGame(){
     let interval = 5; //5 detik
 
@@ -153,3 +194,4 @@ function timerGame(){
         }
     },1000);
 }
+
